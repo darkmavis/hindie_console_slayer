@@ -1,0 +1,19 @@
+[package]
+name = "hindie_console_slayer"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+winapi = { version = "0.3", features = ["winuser", "windef", "minwindef"] }
+
+[profile.release]
+# Optimize for size over speed
+opt-level = "z"
+# Link Time Optimization for better size reduction
+lto = true
+# Use fewer parallel code generation units for better optimization
+codegen-units = 1
+# Abort on panic instead of unwinding (saves space)
+panic = "abort"
+# Strip debug symbols
+strip = true
